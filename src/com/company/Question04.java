@@ -1147,9 +1147,10 @@ public class Question04 {
         String[] passportList = input.split("\n\n");
 
         for (String passport : passportList){
+            String passportFields = " " + passport.replace('\n', ' ') + " ";
             boolean isValid = true;
             for (String field : fields) {
-                if (!Pattern.compile(field).matcher(passport).find()){
+                if (!Pattern.compile(field).matcher(passportFields).find()){
                     isValid = false;
                     break;
                 }
@@ -1167,13 +1168,13 @@ public class Question04 {
         String[] fields1 = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"};
 
         String[] fields2 = {
-                "\\bbyr:(19[2-9][0-9]|200[0-2])\\b",
-                "\\biyr:(201[0-9]|2020)\\b",
-                "\\beyr:(202[0-9]|2030)\\b",
-                "\\bhgt:((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)\\b",
-                "\\bhcl:(#[0-9a-f]{6})\\b",
-                "\\becl:(amb|blu|brn|gry|grn|hzl|oth)\\b",
-                "\\bpid:[0-9]{9}\\b"
+                "byr:(19[2-9][0-9]|200[0-2])",
+                "iyr:(201[0-9]|2020)",
+                "eyr:(202[0-9]|2030)",
+                "hgt:((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)",
+                "hcl:(#[0-9a-f]{6})",
+                "ecl:(amb|blu|brn|gry|grn|hzl|oth)",
+                "pid:[0-9]{9}"
         };
 
         System.out.printf("Valid passports:\nPart 1: %s\nPart2: %s",
