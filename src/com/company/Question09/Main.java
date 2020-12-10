@@ -21,18 +21,19 @@ public class Main {
 
         long invalidNum = 0;
 
-        for (int i = 25; i < numbers.size(); i++){ //i = currentPos (26th num)
+        for (int i = 25; i < numbers.size(); i++){
             long currentNum = numbers.get(i);
-            if (!isSumOf2NumFromArray(currentNum, numbers.subList(i - 25, i - 1))){
-                System.out.println("Invalid num: " + currentNum);
+            if (!isSumOf2NumFromArray(currentNum, numbers.subList(i - 25, i))){
                 invalidNum = currentNum;
                 break;
             }
         }
 
+        System.out.println("Invalid num: " + invalidNum);
+
         for (int i = 0; i < numbers.size() - 1; i++){
             for (int j = i + 1; j < numbers.size(); j++){
-                List<Long> subArray = numbers.subList(i - 25, i - 1);
+                List<Long> subArray = numbers.subList(i, j + 1);
                 if (invalidNum == sum(subArray)){
                     Collections.sort(subArray);
                     long small = subArray.get(0), big = subArray.get(subArray.size() - 1);
@@ -41,7 +42,6 @@ public class Main {
             }
         }
     }
-
 
     public static boolean isSumOf2NumFromArray(long num, List<Long> array) {
         for (int i = 0; i < array.size() - 1; i++){
