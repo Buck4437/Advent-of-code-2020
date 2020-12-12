@@ -35,7 +35,7 @@ public class Main {
         int s = 0;
         for (int i = 0; i < n.size() - 1; i++){
             if (n.get(i+1) - n.get(i) == 3){
-                c *= paths(n.subList(s, i + 1)); //multiplication law
+                c *= paths(n.subList(s, i+1)); //multiplication law
                 s = i + 1;
             }
         }
