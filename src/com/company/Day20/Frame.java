@@ -22,6 +22,14 @@ public class Frame {
     }
 
     public ArrayList<Puzzle> solve() {
+        /*Refactor idea:
+        Convert edges into unique ID
+        Store all edges of puzzle pieces in a hashtable
+        sth like 101010: [1222, 1116], 101110: [1114, 1337]
+        then find puzzle pieces with 2 unique edge and put into field
+        remove id from hashtable
+        continue find puzzle pieces with 2 unique and so on
+         */
         ArrayList<Puzzle> solved = new ArrayList<>();
         ArrayList<Puzzle> unsolved = new ArrayList<>(puzzles);
 
